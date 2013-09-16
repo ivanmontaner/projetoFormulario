@@ -1,5 +1,7 @@
 package br.com.projetoFormulario.domain;
 
+import java.util.List;
+
 import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.validator.Validations;
 
@@ -9,6 +11,7 @@ public class Field {
 	private String type;
 	private String placeHolder;
 	private boolean required;
+	private List<Radio> radios;
 	
 	public String getLabel() {
 		return label;
@@ -34,11 +37,21 @@ public class Field {
 	public void setRequired(boolean required) {
 		this.required = required;
 	}
+	public List<Radio> getRadios() {
+		return radios;
+	}
+	public void setRadios(List<Radio> radios) {
+		this.radios = radios;
+	}
 
 	public void validate(Validator validator) {
 		validator.checking(new Validations() {{
 			that(label != null && label != "", "label", "label.is.required");
-			that(type  != null && label != "", "type",  "type.is.required");
+			that(type  != null && type  != "", "type",  "type.is.required");
+			
+			if (type != null && type.equals("radio")) {
+				that(radios != null && radios.size() > 0, "radios", "radio.size.lower.than.one");
+			}
 		}});
 	}
 }

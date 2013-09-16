@@ -31,7 +31,20 @@ public class FieldTest {
 		
 		Assert.assertTrue(validator.hasErrors());
 	}
-
+	
+	@Test
+	public void quandoTipoCampoRadioDeveTerPeloMenosUmRadio(){
+		MockValidator validator = new MockValidator();
+		Field field = newField();
+		
+		field.setType("radio");
+		field.setRadios(null);
+		
+		field.validate(validator);
+		
+		Assert.assertTrue(validator.hasErrors());
+	}
+	
 	private Field newField() {
 		Field field = new Field();
 		field.setLabel("Nome");
