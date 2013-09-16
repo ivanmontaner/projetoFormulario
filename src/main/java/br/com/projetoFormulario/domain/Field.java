@@ -12,6 +12,7 @@ public class Field {
 	private String placeHolder;
 	private boolean required;
 	private List<Radio> radios;
+	private int maxLength;
 	
 	public String getLabel() {
 		return label;
@@ -53,5 +54,11 @@ public class Field {
 				that(radios != null && radios.size() > 0, "radios", "radio.size.lower.than.one");
 			}
 		}});
+	}
+	public int getMaxLength() {
+		return maxLength;
+	}
+	public void setMaxLength(int maxLength) {
+		this.maxLength = maxLength;
 	}
 }
