@@ -1,14 +1,22 @@
 package br.com.projetoFormulario.domain;
 
+import java.util.List;
+
 import br.com.caelum.vraptor.Validator;
-import br.com.caelum.vraptor.util.test.MockValidator;
 import br.com.caelum.vraptor.validator.Validations;
 
 public class Template {
 
 	private String id;
 	private String title;
-
+	private List<Field> fields;
+	
+	public List<Field> getFields() {
+		return fields;
+	}
+	public void setFields(List<Field> fields) {
+		this.fields = fields;
+	}
 	public String getId() {
 		return id;
 	}
@@ -27,6 +35,4 @@ public class Template {
 			that(title != null && title != "", "title", "title.is.required");
 		}});
 	}
-
-
 }
