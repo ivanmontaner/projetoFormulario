@@ -1,9 +1,11 @@
 package br.com.projetoFormulario.connection;
 
+import br.com.caelum.vraptor.ioc.ApplicationScoped;
+
 import com.google.code.morphia.Datastore;
 import com.google.code.morphia.Morphia;
 import com.mongodb.Mongo;
-
+@ApplicationScoped
 public class ConnectionDao {
 	private static ConnectionDao myInstance = null;  
 	  
